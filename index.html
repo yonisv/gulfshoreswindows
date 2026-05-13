@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gulf Shores Windows | Professional Window Washing | Naples, Fort Myers & Marco Island</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- EmailJS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sky:#5BAFD6;
+  --sky-dark:#2E86B5;
+  --sky-deep:#1A5F82;
+  --sky-pale:#E8F5FC;
+  --sky-mid:#B8DDF0;
+  --glass:#F0F8FF;
+  --white:#ffffff;
+  --offwhite:#F7FBFE;
+  --ink:#0D2B3E;
+  --slate:#4A6275;
+  --muted:#7A95A8;
+  --border:rgba(91,175,214,0.18);
+  --radius:14px;
+  --radius-sm:8px;
+  --shadow:0 4px 24px rgba(26,95,130,0.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--slate);background:var(--white);overflow-x:hidden;line-height:1.6}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(26,95,130,0.06)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-icon{width:34px;height:34px;background:var(--sky-deep);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--ink)}
+.nav-logo-text span{color:var(--sky-dark)}
+.nav-links{display:flex;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.875rem;font-weight:500;margin-left:1.75rem;transition:color .2s}
+.nav-links a:hover{color:var(--sky-deep)}
+.nav-cta{background:var(--sky-deep)!important;color:var(--white)!important;padding:.48rem 1.2rem;border-radius:var(--radius-sm);font-weight:700!important;transition:opacity .2s!important}
+.nav-cta:hover{opacity:.88!important}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,var(--sky-deep) 0%,var(--sky-dark) 40%,var(--sky) 100%);display:flex;align-items:center;padding:7rem 2.5rem 5rem;position:relative;overflow:hidden}
+.hero-bubbles{position:absolute;inset:0;pointer-events:none}
+.bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,0.06);animation:float 8s ease-in-out infinite}
+.bubble:nth-child(1){width:300px;height:300px;top:-80px;right:10%;animation-delay:0s}
+.bubble:nth-child(2){width:180px;height:180px;bottom:10%;left:5%;animation-delay:2s}
+.bubble:nth-child(3){width:120px;height:120px;top:30%;right:25%;animation-delay:4s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.hero-inner{position:relative;max-width:1140px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr}.hero-visual{display:none}}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.95);font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:.38rem .9rem;border-radius:100px;margin-bottom:1.5rem}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);color:var(--white);line-height:1.1;font-weight:700;margin-bottom:1.1rem;letter-spacing:-0.5px}
+h1 span{display:block;color:rgba(255,255,255,0.85);font-size:clamp(1.4rem,3vw,2rem);font-weight:600;margin-top:.25rem}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.78);max-width:500px;line-height:1.75;margin-bottom:2rem}
+.hero-actions{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2.25rem}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--sky-deep);font-weight:700;font-size:.95rem;padding:.85rem 1.85rem;border-radius:var(--radius-sm);text-decoration:none;transition:transform .15s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.9);font-weight:600;font-size:.9rem;text-decoration:none;padding:.85rem 1.5rem;border:1.5px solid rgba(255,255,255,0.35);border-radius:var(--radius-sm);transition:background .2s,border-color .2s}
+.btn-ghost:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.6)}
+.hero-trust{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.trust-chip{display:flex;align-items:center;gap:6px;font-size:.8rem;color:rgba(255,255,255,0.7);font-weight:500}
+.trust-chip::before{content:'✓';color:rgba(255,255,255,0.9);font-weight:700}
+
+/* HERO VISUAL */
+.hero-visual{position:relative;display:flex;justify-content:center}
+.window-frame{width:360px;height:400px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.25);border-radius:20px;position:relative;overflow:hidden;backdrop-filter:blur(4px)}
+.window-panes{position:absolute;inset:20px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px}
+.pane{background:linear-gradient(135deg,rgba(255,255,255,0.35) 0%,rgba(255,255,255,0.1) 100%);border-radius:8px;border:1px solid rgba(255,255,255,0.3);position:relative;overflow:hidden}
+.pane-shine{position:absolute;top:8px;left:8px;width:30%;height:3px;background:rgba(255,255,255,0.6);border-radius:4px}
+.pane-shine2{position:absolute;top:16px;left:8px;width:15%;height:3px;background:rgba(255,255,255,0.4);border-radius:4px}
+.squeegee{position:absolute;bottom:16px;right:16px;font-size:2.2rem;animation:squeegee-move 3s ease-in-out infinite;z-index:2}
+@keyframes squeegee-move{0%,100%{transform:translateX(0) rotate(0deg)}50%{transform:translateX(-8px) rotate(-8deg)}}
+.window-badge{margin-top:1rem;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:.55rem 1.25rem;font-size:.8rem;font-weight:700;color:var(--white);white-space:nowrap;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
+.tool-pills{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.85rem;justify-content:center}
+.tool-pill{background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:.35rem .85rem;font-size:.75rem;color:var(--white);font-weight:600;white-space:nowrap}
+
+/* STRIP */
+.strip{background:var(--sky-deep);padding:.8rem 2rem;text-align:center;font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.strip span{margin:0 1rem;opacity:.4}
+
+/* SHARED */
+section{padding:5.5rem 2.5rem}
+.section-inner{max-width:1140px;margin:0 auto}
+.section-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sky-deep);background:var(--sky-pale);padding:.3rem .9rem;border-radius:100px;margin-bottom:.9rem;border:1px solid var(--sky-mid)}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.9rem);color:var(--ink);line-height:1.15;font-weight:700;margin-bottom:.85rem;letter-spacing:-0.3px}
+.section-sub{font-size:.97rem;color:var(--muted);max-width:520px;line-height:1.75;margin-bottom:3rem}
+
+/* TRUST BAR */
+.trust-bar{background:var(--sky-pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.75rem 2.5rem}
+.trust-bar-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:12px}
+.trust-icon{width:42px;height:42px;background:var(--white);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;border:1px solid var(--border);flex-shrink:0}
+.trust-item h4{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:1px}
+.trust-item p{font-size:.78rem;color:var(--muted)}
+
+/* TOOLS / PROCESS */
+#process{background:var(--white)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.1rem;margin-bottom:4rem}
+.tool-card{background:var(--offwhite);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;text-align:center;transition:transform .2s,box-shadow .2s,border-color .2s}
+.tool-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--sky-mid)}
+.tool-emoji{font-size:2.5rem;margin-bottom:1rem;display:block}
+.tool-card h3{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.tool-card p{font-size:.858rem;color:var(--muted);line-height:1.6}
+
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem}
+.process-step{text-align:center}
+.step-circle{width:56px;height:56px;border-radius:50%;background:var(--sky-pale);border:2px solid var(--sky-mid);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--sky-deep)}
+.process-step h3{font-size:.97rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.process-step p{font-size:.858rem;color:var(--muted);line-height:1.65}
+
+/* QUOTE CALCULATOR */
+#quote{background:var(--sky-pale)}
+.quote-wrapper{display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start}
+@media(max-width:860px){.quote-wrapper{grid-template-columns:1fr}}
+.calc-section-title{font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sky-deep);margin-bottom:1rem}
+.home-types{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.75rem}
+.home-type-card{background:var(--white);border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem;cursor:pointer;transition:border-color .2s,box-shadow .2s;text-align:center}
+.home-type-card:hover{border-color:var(--sky)}
+.home-type-card.selected{border-color:var(--sky-deep);box-shadow:0 0 0 3px var(--sky-pale)}
+.home-type-card .ht-emoji{font-size:2rem;display:block;margin-bottom:.5rem}
+.home-type-card h4{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.2rem}
+.home-type-card p{font-size:.75rem;color:var(--muted);line-height:1.5}
+.home-type-card .ht-time{font-size:.72rem;font-weight:700;color:var(--sky-dark);margin-top:.4rem;background:var(--sky-pale);padding:.2rem .6rem;border-radius:100px;display:inline-block}
+
+.freq-options{display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.75rem}
+.freq-option{display:flex;align-items:center;justify-content:space-between;background:var(--white);border:2px solid var(--border);border-radius:var(--radius-sm);padding:.85rem 1.1rem;cursor:pointer;transition:border-color .2s}
+.freq-option:hover{border-color:var(--sky)}
+.freq-option.selected{border-color:var(--sky-deep);background:var(--sky-pale)}
+.freq-option-left{display:flex;align-items:center;gap:10px}
+.freq-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--sky-mid);flex-shrink:0;transition:background .2s,border-color .2s;position:relative}
+.freq-option.selected .freq-radio{background:var(--sky-deep);border-color:var(--sky-deep)}
+.freq-option.selected .freq-radio::after{content:'';position:absolute;inset:3px;background:white;border-radius:50%}
+.freq-label{font-size:.9rem;font-weight:600;color:var(--ink)}
+.freq-sub{font-size:.75rem;color:var(--muted)}
+.freq-badge{font-size:.7rem;font-weight:700;background:var(--sky-deep);color:var(--white);padding:.2rem .65rem;border-radius:100px}
+
+/* QUOTE RESULT */
+.quote-result{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);position:sticky;top:90px}
+.quote-result-header{text-align:center;margin-bottom:1.5rem}
+.quote-result-header p{font-size:.78rem;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem}
+.quote-price{font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--sky-deep);font-weight:700;line-height:1}
+.quote-price sub{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;vertical-align:middle;color:var(--muted)}
+.quote-price sup{font-family:'DM Sans',sans-serif;font-size:1rem;vertical-align:super;color:var(--sky-deep)}
+.quote-time{display:inline-flex;align-items:center;gap:6px;background:var(--sky-pale);border:1px solid var(--sky-mid);color:var(--sky-deep);font-size:.78rem;font-weight:700;padding:.3rem .85rem;border-radius:100px;margin-top:.5rem}
+.quote-breakdown{margin:1.5rem 0;display:flex;flex-direction:column;gap:.6rem}
+.qb-row{display:flex;justify-content:space-between;font-size:.875rem}
+.qb-row span:first-child{color:var(--muted)}
+.qb-row span:last-child{font-weight:600;color:var(--ink)}
+.qb-divider{height:1px;background:var(--border);margin:.25rem 0}
+.qb-total{font-size:1rem;font-weight:700}
+.qb-total span:last-child{color:var(--sky-deep)}
+.quote-note{font-size:.75rem;color:var(--muted);text-align:center;margin-bottom:1.25rem;line-height:1.5}
+.btn-book-now{display:block;width:100%;text-align:center;padding:.9rem;background:var(--sky-deep);color:var(--white);border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:.97rem;font-weight:700;cursor:pointer;transition:opacity .2s,transform .15s;text-decoration:none}
+.btn-book-now:hover{opacity:.9;transform:translateY(-1px)}
+.quote-placeholder{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.9rem}
+.quote-placeholder .qp-icon{font-size:3rem;display:block;margin-bottom:.75rem;opacity:.4}
+
+/* SERVICES */
+#services{background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem}
+.svc-card{background:var(--offwhite);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:transform .2s,box-shadow .2s,border-color .2s}
+.svc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--sky-mid)}
+.svc-icon{width:48px;height:48px;border-radius:10px;background:var(--sky-pale);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem;border:1px solid var(--border)}
+.svc-card h3{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.svc-card p{font-size:.858rem;color:var(--muted);line-height:1.65}
+
+/* MAP */
+#area{background:var(--sky-pale)}
+.map-wrapper{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+.map-legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.25rem}
+.legend-item{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.82rem;font-weight:500}
+.legend-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+
+/* ABOUT */
+#about{background:var(--white)}
+.about-wrapper{display:grid;grid-template-columns:380px 1fr;gap:4rem;align-items:center}
+@media(max-width:800px){.about-wrapper{grid-template-columns:1fr}}
+.about-img-wrap{position:relative}
+.about-img{width:100%;height:440px;object-fit:cover;object-position:center top;border-radius:20px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.about-owner-badge{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:var(--sky-deep);color:var(--white);border-radius:100px;padding:.55rem 1.35rem;font-size:.8rem;font-weight:700;white-space:nowrap;box-shadow:0 4px 16px rgba(26,95,130,0.25)}
+.about-content .section-tag{background:var(--sky-pale)}
+.about-quote{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ink);line-height:1.5;font-weight:600;padding-left:1.25rem;border-left:3px solid var(--sky);margin-bottom:1.5rem}
+.about-body{font-size:.97rem;color:var(--muted);line-height:1.8;margin-bottom:2rem}
+.about-stats{display:flex;gap:2rem;flex-wrap:wrap}
+.about-stat strong{display:block;font-family:'Playfair Display',serif;font-size:2rem;color:var(--sky-deep);font-weight:700}
+.about-stat span{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+/* CONTACT / BOOK */
+#book{background:var(--offwhite)}
+.book-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+@media(max-width:700px){.book-wrapper{grid-template-columns:1fr;gap:2rem}}
+.book-info p{font-size:.97rem;color:var(--muted);line-height:1.75;margin-bottom:1.75rem}
+.cmethod{display:flex;align-items:center;gap:12px;margin-bottom:.85rem}
+.cmethod-icon{width:42px;height:42px;background:var(--sky-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;border:1px solid var(--border)}
+.cmethod-text strong{display:block;font-size:.75rem;color:var(--muted);font-weight:600;margin-bottom:2px;text-transform:uppercase;letter-spacing:.5px}
+.cmethod-text a,.cmethod-text span{font-size:.95rem;font-weight:700;color:var(--sky-deep);text-decoration:none}
+.cmethod-text a:hover{text-decoration:underline}
+.book-form{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:.85rem}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.85rem}
+label{font-size:.73rem;font-weight:700;color:var(--ink);letter-spacing:.5px;text-transform:uppercase}
+input,select,textarea{padding:.7rem .9rem;border:1.5px solid rgba(0,0,0,.1);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:.93rem;color:var(--ink);background:var(--offwhite);transition:border-color .2s,box-shadow .2s;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--sky-dark);background:var(--white);box-shadow:0 0 0 3px var(--sky-pale)}
+textarea{resize:vertical;min-height:80px}
+.btn-submit{width:100%;padding:.9rem;background:var(--sky-deep);color:var(--white);border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:.97rem;font-weight:700;cursor:pointer;transition:opacity .2s,transform .15s}
+.btn-submit:hover{opacity:.9;transform:translateY(-1px)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-confirm{display:none;text-align:center;padding:2.5rem 1rem}
+.form-confirm .fc-icon{font-size:3rem;margin-bottom:1rem;display:block}
+.form-confirm h3{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--sky-deep);margin-bottom:.5rem}
+.form-confirm p{color:var(--muted);font-size:.93rem;line-height:1.65}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(255,255,255,.4);text-align:center;padding:2.5rem 2rem;font-size:.82rem}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white);display:block;margin-bottom:.3rem;font-weight:700}
+footer a{color:rgba(255,255,255,.35);text-decoration:none}
+footer a:hover{color:var(--sky)}
+.footer-tagline{color:rgba(255,255,255,.25);font-size:.75rem;margin-top:.25rem}
+
+/* RESPONSIVE NAV */
+@media(max-width:768px){.nav-links .hide-mobile{display:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">🪟</div>
+    <div class="nav-logo-text">Gulf Shores <span>Windows</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#process" class="hide-mobile">How It Works</a>
+    <a href="#quote" class="hide-mobile">Get a Quote</a>
+    <a href="#services" class="hide-mobile">Services</a>
+    <a href="#area" class="hide-mobile">Service Area</a>
+    <a href="#about" class="hide-mobile">About</a>
+    <a href="#book" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        Naples · Fort Myers · Marco Island
+      </div>
+      <h1>Crystal Clear Windows,<span>Trusted by Your SWFL Neighbors.</span></h1>
+      <p class="hero-sub">Professional window washing that makes your home shine — delivered by a local, owner-operated business that works completely around your schedule.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn-white">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M9 7h6"/></svg>
+          Get My Free Quote
+        </a>
+        <a href="#process" class="btn-ghost">See How It Works →</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-chip">SWFL Native</div>
+        <div class="trust-chip">Owner-Operated</div>
+        <div class="trust-chip">Your Schedule</div>
+        <div class="trust-chip">Streak-Free Guarantee</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0">
+        <div class="tool-pills">
+          <div class="tool-pill">🧹 Squeegee</div>
+          <div class="tool-pill">🧽 Microfiber Towels</div>
+          <div class="tool-pill">🪜 Pole Extender</div>
+        </div>
+        <div class="window-frame">
+          <div class="window-panes">
+            <div class="pane"><div class="pane-shine"></div><div class="pane-shine2"></div></div>
+            <div class="pane"><div class="pane-shine"></div></div>
+            <div class="pane"><div class="pane-shine"></div><div class="pane-shine2"></div></div>
+            <div class="pane"><div class="pane-shine"></div></div>
+          </div>
+          <div class="squeegee">🧹</div>
+        </div>
+        <div class="window-badge">
+          <span style="opacity:.8">✨</span> Streak-Free · Salt Air Specialists · SWFL Trusted
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  STREAK-FREE RESULTS <span>•</span> PROFESSIONAL SQUEEGEE <span>•</span> MICROFIBER FINISH <span>•</span> POLE EXTENDER FOR HIGH WINDOWS <span>•</span> SAME-DAY AVAILABLE
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="trust-icon">🧹</div>
+      <div><h4>Professional Squeegee</h4><p>Streak-free, professional-grade finish</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🧽</div>
+      <div><h4>Microfiber Towels</h4><p>Lint-free, scratch-free cleaning</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🪜</div>
+      <div><h4>Pole Extender</h4><p>Reaches second-story & high windows</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📍</div>
+      <div><h4>SWFL Native</h4><p>Local, owner-operated — not a franchise</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS / TOOLS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="section-tag">Professional Tools & Process</div>
+    <h2 class="section-title">The Right Tools for Crystal Clear Results</h2>
+    <p class="section-sub">Every window is cleaned using a professional 3-step process that removes dirt, grime, and salt air residue common in Southwest Florida.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-emoji">🧹</span>
+        <h3>Professional Squeegee</h3>
+        <p>The same tool professionals worldwide use for a streak-free finish. Removes water cleanly in one pass — no streaks, no water spots.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-emoji">🧽</span>
+        <h3>Microfiber Towels</h3>
+        <p>Lint-free and scratch-free microfiber cloths wipe edges and frames perfectly, leaving zero residue behind.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-emoji">🪜</span>
+        <h3>Pole Extender</h3>
+        <p>Reaches second-story and hard-to-access windows safely — no ladders required for most jobs, keeping your property damage-free.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-emoji">💧</span>
+        <h3>SWFL-Grade Solution</h3>
+        <p>Specially formulated for Florida's salt air, humidity, and hard water mineral deposits that build up on windows near the coast.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <div class="section-tag">Simple Process</div>
+      <h3 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem)">Done in 4 Easy Steps</h3>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-circle">1</div><h3>Get Your Quote</h3><p>Use our instant calculator below. Answer 2 questions and get your price and time estimate right away.</p></div>
+        <div class="process-step"><div class="step-circle">2</div><h3>Pick Your Schedule</h3><p>Choose a date and time that works for you — mornings, evenings, weekends. Your schedule, not ours.</p></div>
+        <div class="process-step"><div class="step-circle">3</div><h3>We Show Up & Clean</h3><p>I arrive on time with all professional equipment and get every window sparkling clean.</p></div>
+        <div class="process-step"><div class="step-circle">4</div><h3>Enjoy Crystal Clear Views</h3><p>Pay by cash, Venmo, Zelle, or card. Streak-free results — guaranteed or I come back.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE CALCULATOR -->
+<section id="quote">
+  <div class="section-inner">
+    <div class="section-tag">Instant Quote Calculator</div>
+    <h2 class="section-title">What's Your Home Worth of Windows?</h2>
+    <p class="section-sub">Answer two quick questions and get an instant price and time estimate — no phone call needed.</p>
+    <div class="quote-wrapper">
+      <div>
+        <div class="calc-section-title">Step 1 — What type of home do you have?</div>
+        <div class="home-types">
+          <div class="home-type-card" onclick="selectHome(this,'condo')" data-type="condo">
+            <span class="ht-emoji">🏢</span>
+            <h4>Condo / Apartment</h4>
+            <p>1–2 bedrooms, single floor, smaller window count</p>
+            <div class="ht-time">⏱ Est. 1–1.5 hrs</div>
+          </div>
+          <div class="home-type-card" onclick="selectHome(this,'standard')" data-type="standard">
+            <span class="ht-emoji">🏠</span>
+            <h4>Standard Home</h4>
+            <p>3–4 bedrooms, single story or small two-story</p>
+            <div class="ht-time">⏱ Est. 2–3 hrs</div>
+          </div>
+          <div class="home-type-card" onclick="selectHome(this,'large')" data-type="large">
+            <span class="ht-emoji">🏡</span>
+            <h4>Large Home</h4>
+            <p>4–5 bedrooms, two stories, more windows</p>
+            <div class="ht-time">⏱ Est. 3–4 hrs</div>
+          </div>
+          <div class="home-type-card" onclick="selectHome(this,'estate')" data-type="estate">
+            <span class="ht-emoji">🏰</span>
+            <h4>Estate / Luxury Home</h4>
+            <p>5+ bedrooms, large windows, waterfront or custom</p>
+            <div class="ht-time">⏱ Est. 4–6+ hrs</div>
+          </div>
+        </div>
+
+        <div class="calc-section-title">Step 2 — How often would you like service?</div>
+        <div class="freq-options">
+          <div class="freq-option" onclick="selectFreq(this,'once',1.0)">
+            <div class="freq-option-left">
+              <div class="freq-radio"></div>
+              <div><div class="freq-label">One-Time Clean</div><div class="freq-sub">Single visit, no commitment</div></div>
+            </div>
+          </div>
+          <div class="freq-option" onclick="selectFreq(this,'monthly',0.9)">
+            <div class="freq-option-left">
+              <div class="freq-radio"></div>
+              <div><div class="freq-label">Monthly Service</div><div class="freq-sub">Once per month — most popular in SWFL</div></div>
+            </div>
+            <div class="freq-badge">10% OFF</div>
+          </div>
+          <div class="freq-option" onclick="selectFreq(this,'biweekly',0.85)">
+            <div class="freq-option-left">
+              <div class="freq-radio"></div>
+              <div><div class="freq-label">Bi-Weekly Service</div><div class="freq-sub">Every two weeks — ideal for coastal homes</div></div>
+            </div>
+            <div class="freq-badge">15% OFF</div>
+          </div>
+          <div class="freq-option" onclick="selectFreq(this,'weekly',0.8)">
+            <div class="freq-option-left">
+              <div class="freq-radio"></div>
+              <div><div class="freq-label">Weekly Service</div><div class="freq-sub">Every week — best for salt air properties</div></div>
+            </div>
+            <div class="freq-badge">20% OFF</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUOTE RESULT -->
+      <div class="quote-result">
+        <div id="quote-placeholder" class="quote-placeholder">
+          <span class="qp-icon">🪟</span>
+          <p>Select your home type and service frequency above to see your instant quote.</p>
+        </div>
+        <div id="quote-output" style="display:none">
+          <div class="quote-result-header">
+            <p>Your Estimated Quote</p>
+            <div class="quote-price"><sup>$</sup><span id="q-price">—</span></div>
+            <div class="quote-time">⏱ <span id="q-time">—</span></div>
+          </div>
+          <div class="quote-breakdown">
+            <div class="qb-row"><span>Home type</span><span id="qb-home">—</span></div>
+            <div class="qb-row"><span>Base price</span><span id="qb-base">—</span></div>
+            <div class="qb-row"><span>Frequency</span><span id="qb-freq">—</span></div>
+            <div class="qb-row"><span id="qb-disc-label" style="display:none">Recurring discount</span><span id="qb-disc" style="color:#2E86B5"></span></div>
+            <div class="qb-divider"></div>
+            <div class="qb-row qb-total"><span>Estimated total</span><span id="qb-total">—</span></div>
+          </div>
+          <p class="quote-note">Final price confirmed after a quick look at your property. No surprise fees — ever.</p>
+          <a href="#book" class="btn-book-now" onclick="prefillForm()">Book This Service →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">Services</div>
+    <h2 class="section-title">Everything Your Windows Need</h2>
+    <p class="section-sub">From single condos to sprawling waterfront estates — Gulf Shores Windows handles it all with professional-grade equipment.</p>
+    <div class="services-grid">
+      <div class="svc-card"><div class="svc-icon">🏢</div><h3>Condo & Apartment Windows</h3><p>Quick, efficient cleaning for condo units. In and out in under 2 hours — minimal disruption to your day.</p></div>
+      <div class="svc-card"><div class="svc-icon">🏠</div><h3>Residential Home Windows</h3><p>Interior and exterior cleaning for standard single-family homes, including screens and window sills.</p></div>
+      <div class="svc-card"><div class="svc-icon">🏰</div><h3>Luxury & Waterfront Estates</h3><p>Large-format windows, floor-to-ceiling glass, and hard-to-reach panes — handled with care and precision.</p></div>
+      <div class="svc-card"><div class="svc-icon">🔄</div><h3>Recurring Maintenance Plans</h3><p>Monthly, bi-weekly, or weekly service to keep salt air and Florida humidity from dulling your windows.</p></div>
+      <div class="svc-card"><div class="svc-icon">🪟</div><h3>Screen Cleaning</h3><p>Window screens trap dust, pollen, and salt residue. We clean them alongside your windows for a complete finish.</p></div>
+      <div class="svc-card"><div class="svc-icon">⚡</div><h3>Same-Day Service</h3><p>Need it done today? Call or text and I'll confirm availability. Most same-day requests are accommodated.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="area">
+  <div class="section-inner">
+    <div class="section-tag">Service Area</div>
+    <h2 class="section-title">Serving All of Southwest Florida</h2>
+    <p class="section-sub">Based locally — covering Naples to Fort Myers and everywhere in between. Hover a zone to explore coverage.</p>
+    <div class="map-wrapper">
+      <svg id="swfl-map" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#EAF3F9">
+        <defs>
+          <filter id="dot-glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <path d="M0,160 Q55,200 0,270 L0,520 L180,520 Q160,450 140,410 Q110,360 65,325 Q30,295 10,260 Z" fill="rgba(91,175,214,0.2)"/>
+        <text x="18" y="400" fill="rgba(44,110,138,0.3)" font-size="13" font-family="DM Sans,sans-serif" font-weight="700" letter-spacing="3" transform="rotate(-90,18,400)">GULF OF MEXICO</text>
+        <path id="zone-lee" d="M200,60 L580,60 L580,255 L450,265 L420,280 L370,290 L300,280 L255,265 L200,255 Z" fill="rgba(91,175,214,0.18)" stroke="rgba(44,110,138,0.35)" stroke-width="1.5" style="cursor:pointer;transition:fill .25s"/>
+        <text x="450" y="150" fill="rgba(26,95,130,0.35)" font-size="19" font-family="Playfair Display,serif" font-weight="700">Lee County</text>
+        <path id="zone-collier" d="M200,255 L255,265 L300,280 L370,290 L420,280 L450,265 L580,255 L580,440 L450,465 L360,474 L270,462 L200,445 Z" fill="rgba(184,221,240,0.2)" stroke="rgba(91,175,214,0.4)" stroke-width="1.5" style="cursor:pointer;transition:fill .25s"/>
+        <text x="430" y="400" fill="rgba(46,134,181,0.35)" font-size="17" font-family="Playfair Display,serif" font-weight="700">Collier County</text>
+        <g class="city" data-name="Fort Myers" style="cursor:pointer">
+          <circle cx="340" cy="170" r="9" fill="#1A5F82" filter="url(#dot-glow)" opacity="0.9"/>
+          <circle cx="340" cy="170" r="16" fill="rgba(26,95,130,0.15)"/>
+          <text x="360" y="165" fill="#0D2B3E" font-size="13" font-family="DM Sans,sans-serif" font-weight="700">Fort Myers</text>
+          <text x="360" y="179" fill="#7A95A8" font-size="10" font-family="DM Sans,sans-serif">Lee County</text>
+        </g>
+        <g class="city" data-name="Cape Coral" style="cursor:pointer">
+          <circle cx="238" cy="195" r="7" fill="#1A5F82" opacity="0.75"/>
+          <circle cx="238" cy="195" r="13" fill="rgba(26,95,130,0.12)"/>
+          <text x="255" y="191" fill="#0D2B3E" font-size="12" font-family="DM Sans,sans-serif" font-weight="600">Cape Coral</text>
+        </g>
+        <g class="city" data-name="Bonita Springs" style="cursor:pointer">
+          <circle cx="370" cy="240" r="6" fill="#1A5F82" opacity="0.7"/>
+          <text x="382" y="236" fill="#4A6275" font-size="11" font-family="DM Sans,sans-serif" font-weight="500">Bonita Springs</text>
+        </g>
+        <g class="city" data-name="Estero" style="cursor:pointer">
+          <circle cx="400" cy="218" r="5" fill="#1A5F82" opacity="0.65"/>
+          <text x="410" y="214" fill="#4A6275" font-size="11" font-family="DM Sans,sans-serif">Estero</text>
+        </g>
+        <g class="city" data-name="Naples" style="cursor:pointer">
+          <circle cx="335" cy="345" r="9" fill="#2E86B5" filter="url(#dot-glow)" opacity="0.95"/>
+          <circle cx="335" cy="345" r="17" fill="rgba(46,134,181,0.15)"/>
+          <text x="356" y="341" fill="#0D2B3E" font-size="13" font-family="DM Sans,sans-serif" font-weight="700">Naples</text>
+          <text x="356" y="355" fill="#7A95A8" font-size="10" font-family="DM Sans,sans-serif">Collier County</text>
+        </g>
+        <g class="city" data-name="Marco Island" style="cursor:pointer">
+          <circle cx="278" cy="430" r="7" fill="#2E86B5" opacity="0.8"/>
+          <circle cx="278" cy="430" r="13" fill="rgba(46,134,181,0.15)"/>
+          <text x="294" y="426" fill="#0D2B3E" font-size="12" font-family="DM Sans,sans-serif" font-weight="600">Marco Island</text>
+        </g>
+        <g class="city" data-name="Golden Gate" style="cursor:pointer">
+          <circle cx="415" cy="360" r="5" fill="#2E86B5" opacity="0.65"/>
+          <text x="426" y="356" fill="#4A6275" font-size="11" font-family="DM Sans,sans-serif">Golden Gate</text>
+        </g>
+        <g class="city" data-name="East Naples" style="cursor:pointer">
+          <circle cx="385" cy="378" r="5" fill="#2E86B5" opacity="0.65"/>
+          <text x="396" y="374" fill="#4A6275" font-size="11" font-family="DM Sans,sans-serif">East Naples</text>
+        </g>
+        <g id="map-tooltip" style="display:none;pointer-events:none">
+          <rect id="tt-bg" rx="8" fill="white" stroke="rgba(91,175,214,0.4)" stroke-width="1"/>
+          <text id="tt-name" fill="#0D2B3E" font-size="12" font-family="DM Sans,sans-serif" font-weight="700"/>
+          <text id="tt-sub" fill="#7A95A8" font-size="10" font-family="DM Sans,sans-serif"/>
+        </g>
+      </svg>
+    </div>
+    <div class="map-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#1A5F82"></div>Lee County — Fort Myers, Cape Coral, Bonita Springs, Estero</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#2E86B5"></div>Collier County — Naples, Marco Island, Golden Gate, East Naples</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-wrapper">
+      <div class="about-img-wrap">
+        <img src="yonis.png" alt="Yonis Velasquez — Gulf Shores Windows" class="about-img"/>
+        <div class="about-owner-badge">👋 Yonis Velasquez · Owner & Operator</div>
+      </div>
+      <div class="about-content">
+        <div class="section-tag">Owner-Operated · SWFL Native</div>
+        <h2 class="section-title">The Person Behind Every Clean Window</h2>
+        <p class="about-quote">"When you book Gulf Shores Windows, you're not getting a random worker — you're getting me, personally, every single time."</p>
+        <p class="about-body">
+          I'm Yonis Velasquez, a Southwest Florida native who grew up in this community and takes real pride in serving it. I know these neighborhoods, I understand the salt air and humidity that dulls windows along the coast, and I know exactly what SWFL homeowners expect.
+          <br><br>
+          My background as a college athlete gave me the foundation for everything I bring to this work — reliability, responsibility, and a relentless work ethic. When I commit to a job, I see it through completely, every time, no shortcuts.
+          <br><br>
+          Because I run this business myself — no franchise, no middlemen — I can work entirely around your schedule. Mornings, evenings, weekends — whatever works for you. You talk directly to me, book directly with me, and I show up at your door, guaranteed.
+        </p>
+        <div class="about-stats">
+          <div class="about-stat"><strong>7</strong><span>Days a week</span></div>
+          <div class="about-stat"><strong>100%</strong><span>Owner-operated</span></div>
+          <div class="about-stat"><strong>SWFL</strong><span>Born & raised</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK / CONTACT -->
+<section id="book">
+  <div class="section-inner">
+    <div class="book-wrapper">
+      <div class="book-info">
+        <div class="section-tag">Book Your Service</div>
+        <h2 class="section-title">Ready for Crystal Clear Windows?</h2>
+        <p>Fill out the form and I'll confirm your booking within a few hours — usually much faster. Or reach out directly anytime.</p>
+        <div class="cmethod">
+          <div class="cmethod-icon">📞</div>
+          <div class="cmethod-text"><strong>Call or Text Yonis</strong><a href="tel:+12392731075">(239) 273-1075</a></div>
+        </div>
+        <div class="cmethod">
+          <div class="cmethod-icon">📧</div>
+          <div class="cmethod-text"><strong>Email</strong><a href="mailto:gshorewindows@gmail.com">gshorewindows@gmail.com</a></div>
+        </div>
+        <div class="cmethod">
+          <div class="cmethod-icon">🕐</div>
+          <div class="cmethod-text"><strong>Availability</strong><span>7 days a week — your schedule</span></div>
+        </div>
+        <div class="cmethod">
+          <div class="cmethod-icon">💳</div>
+          <div class="cmethod-text"><strong>Payment</strong><span>Cash · Venmo · Zelle · Card</span></div>
+        </div>
+      </div>
+      <div class="book-form">
+        <div id="form-fields">
+          <div class="form-row">
+            <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" placeholder="Maria"/></div>
+            <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Johnson"/></div>
+          </div>
+          <div class="form-group"><label for="fphone">Phone Number</label><input type="tel" id="fphone" placeholder="(239) 555-0000"/></div>
+          <div class="form-group"><label for="femail">Email Address</label><input type="email" id="femail" placeholder="you@example.com"/></div>
+          <div class="form-group">
+            <label for="fservice">Service Type</label>
+            <select id="fservice">
+              <option value="">Select a service…</option>
+              <option>One-Time Window Cleaning</option>
+              <option>Monthly Recurring Service</option>
+              <option>Bi-Weekly Recurring Service</option>
+              <option>Weekly Recurring Service</option>
+              <option>Estate / Luxury Home</option>
+              <option>Same-Day Request</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="fdate">Preferred Date</label><input type="date" id="fdate"/></div>
+          <div class="form-group"><label for="fdetails">Tell Me About Your Home</label><textarea id="fdetails" placeholder="Home type, approx. number of windows, address area, anything else helpful…"></textarea></div>
+          <button class="btn-submit" id="submit-btn" onclick="submitForm()">Send My Booking Request →</button>
+          <p style="font-size:.73rem;color:var(--muted);text-align:center;margin-top:.75rem">You'll receive a confirmation email within minutes of submitting.</p>
+        </div>
+        <div class="form-confirm" id="form-confirm">
+          <span class="fc-icon">✅</span>
+          <h3>You're All Set!</h3>
+          <p>Thanks for booking with Gulf Shores Windows. A confirmation email is on its way to your inbox from <strong>gshorewindows@gmail.com</strong>.<br><br>Yonis will follow up shortly to confirm your date and time. Look out for a call or text from <strong>(239) 273-1075</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">🪟 Gulf Shores Windows</span>
+  <div class="footer-tagline">Professional Window Washing · Owner-Operated · SWFL Native</div>
+  <p style="margin-top:.5rem">Serving Naples, Fort Myers, Marco Island &amp; all of Southwest Florida</p>
+  <p style="margin-top:.75rem">
+    <a href="#process">How It Works</a> &nbsp;·&nbsp;
+    <a href="#quote">Get a Quote</a> &nbsp;·&nbsp;
+    <a href="#services">Services</a> &nbsp;·&nbsp;
+    <a href="#area">Service Area</a> &nbsp;·&nbsp;
+    <a href="#about">About</a> &nbsp;·&nbsp;
+    <a href="#book">Book Now</a>
+  </p>
+  <p style="margin-top:.9rem;font-size:.72rem;opacity:.3">© 2025 Gulf Shores Windows. All rights reserved. · (239) 273-1075 · gshorewindows@gmail.com</p>
+</footer>
+
+<script>
+// ── EmailJS SETUP ──────────────────────────────────────────────
+// INSTRUCTIONS (5 minutes):
+// 1. Go to https://www.emailjs.com and create a free account
+// 2. Add a new Email Service → connect your Gmail (gshorewindows@gmail.com)
+// 3. Create an Email Template with these variables:
+//      {{from_name}}, {{from_email}}, {{phone}}, {{service}}, {{date}}, {{details}}, {{quote}}
+// 4. Replace the 3 placeholder values below with your real IDs:
+var EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // Account → API Keys
+var EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // Email Services tab
+var EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // Email Templates tab
+// ──────────────────────────────────────────────────────────────
+
+(function(){
+  if(EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY'){
+    emailjs.init({publicKey: EMAILJS_PUBLIC_KEY});
+  }
+})();
+
+// Quote Calculator State
+var selectedHome = null;
+var selectedFreq = 1.0;
+var selectedFreqLabel = 'One-Time';
+var quoteData = {
+  condo:    {label:'Condo / Apartment',  base:95,  time:'1–1.5 hrs'},
+  standard: {label:'Standard Home',      base:175, time:'2–3 hrs'},
+  large:    {label:'Large Home',         base:275, time:'3–4 hrs'},
+  estate:   {label:'Estate / Luxury',    base:450, time:'4–6+ hrs'}
+};
+
+function selectHome(el, type){
+  document.querySelectorAll('.home-type-card').forEach(function(c){c.classList.remove('selected')});
+  el.classList.add('selected');
+  selectedHome = type;
+  updateQuote();
+}
+
+function selectFreq(el, label, mult){
+  document.querySelectorAll('.freq-option').forEach(function(f){f.classList.remove('selected')});
+  el.classList.add('selected');
+  selectedFreq = mult;
+  selectedFreqLabel = label === 'once' ? 'One-Time' : label === 'monthly' ? 'Monthly' : label === 'biweekly' ? 'Bi-Weekly' : 'Weekly';
+  updateQuote();
+}
+
+function updateQuote(){
+  if(!selectedHome) return;
+  var d = quoteData[selectedHome];
+  var base = d.base;
+  var total = Math.round(base * selectedFreq);
+  var disc = base - total;
+
+  document.getElementById('quote-placeholder').style.display = 'none';
+  document.getElementById('quote-output').style.display = 'block';
+  document.getElementById('q-price').textContent = total;
+  document.getElementById('q-time').textContent = d.time;
+  document.getElementById('qb-home').textContent = d.label;
+  document.getElementById('qb-base').textContent = '$' + base;
+  document.getElementById('qb-freq').textContent = selectedFreqLabel;
+  document.getElementById('qb-total').textContent = '$' + total;
+  var discEl = document.getElementById('qb-disc');
+  var discLabel = document.getElementById('qb-disc-label');
+  if(disc > 0){
+    discLabel.style.display = 'block';
+    discEl.textContent = '−$' + disc;
+  } else {
+    discLabel.style.display = 'none';
+    discEl.textContent = '';
+  }
+  window._currentQuote = '$' + total + ' (' + selectedFreqLabel + ' · ' + d.label + ' · ' + d.time + ')';
+}
+
+function prefillForm(){
+  if(selectedHome && window._currentQuote){
+    var svc = document.getElementById('fservice');
+    var map = {once:'One-Time Window Cleaning',monthly:'Monthly Recurring Service',biweekly:'Bi-Weekly Recurring Service',weekly:'Weekly Recurring Service'};
+    var freqKey = selectedFreqLabel === 'One-Time' ? 'once' : selectedFreqLabel === 'Monthly' ? 'monthly' : selectedFreqLabel === 'Bi-Weekly' ? 'biweekly' : 'weekly';
+    svc.value = map[freqKey] || '';
+  }
+}
+
+function submitForm(){
+  var fname = document.getElementById('fname').value.trim();
+  var lname = document.getElementById('lname').value.trim();
+  var phone = document.getElementById('fphone').value.trim();
+  var email = document.getElementById('femail').value.trim();
+  var service = document.getElementById('fservice').value;
+  var date = document.getElementById('fdate').value;
+  var details = document.getElementById('fdetails').value.trim();
+
+  if(!fname || !phone || !email || !service){
+    alert('Please fill in your name, phone, email, and service type.');
+    return;
+  }
+
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  var templateParams = {
+    from_name:  fname + ' ' + lname,
+    from_email: email,
+    phone:      phone,
+    service:    service,
+    date:       date || 'Flexible',
+    details:    details || 'None provided',
+    quote:      window._currentQuote || 'Not calculated'
+  };
+
+  if(EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY'){
+    // Demo mode — show confirm without real email
+    setTimeout(function(){
+      document.getElementById('form-fields').style.display = 'none';
+      document.getElementById('form-confirm').style.display = 'block';
+    }, 800);
+    return;
+  }
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+    .then(function(){
+      document.getElementById('form-fields').style.display = 'none';
+      document.getElementById('form-confirm').style.display = 'block';
+    }, function(err){
+      btn.disabled = false;
+      btn.textContent = 'Send My Booking Request →';
+      alert('Something went wrong. Please call or text Yonis directly at (239) 273-1075.');
+      console.error('EmailJS error:', err);
+    });
+}
+
+// Map interactions
+[{id:'zone-lee',on:'rgba(91,175,214,0.38)',off:'rgba(91,175,214,0.18)'},
+ {id:'zone-collier',on:'rgba(184,221,240,0.42)',off:'rgba(184,221,240,0.2)'}
+].forEach(function(z){
+  var el=document.getElementById(z.id);
+  if(!el)return;
+  el.addEventListener('mouseenter',function(){el.style.fill=z.on});
+  el.addEventListener('mouseleave',function(){el.style.fill=z.off});
+});
+
+document.querySelectorAll('.city').forEach(function(c){
+  var svg=document.getElementById('swfl-map');
+  var tt=document.getElementById('map-tooltip');
+  var bg=document.getElementById('tt-bg');
+  var nm=document.getElementById('tt-name');
+  var sb=document.getElementById('tt-sub');
+  c.addEventListener('mouseenter',function(){
+    var cr=c.getBoundingClientRect();
+    var sr=svg.getBoundingClientRect();
+    var x=((cr.left+cr.width/2-sr.left)/sr.width)*800;
+    var y=((cr.top-sr.top)/sr.height)*520;
+    nm.textContent=c.getAttribute('data-name');
+    nm.setAttribute('x',x+8);nm.setAttribute('y',y-10);
+    sb.textContent='Gulf Shores Windows serves this area';
+    sb.setAttribute('x',x+8);sb.setAttribute('y',y+3);
+    bg.setAttribute('x',x+3);bg.setAttribute('y',y-24);
+    bg.setAttribute('width',210);bg.setAttribute('height',34);
+    tt.style.display='block';
+  });
+  c.addEventListener('mouseleave',function(){tt.style.display='none';});
+});
+
+// Nav scroll highlight
+var secs=document.querySelectorAll('section[id]');
+var navAs=document.querySelectorAll('nav a[href^="#"]');
+window.addEventListener('scroll',function(){
+  var cur='';
+  secs.forEach(function(s){if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  navAs.forEach(function(a){
+    if(a.classList.contains('nav-cta'))return;
+    a.style.color=a.getAttribute('href')==='#'+cur?'var(--sky-deep)':'';
+  });
+});
+</script>
+
+<!--
+===========================================
+  EMAILJS SETUP GUIDE (5 minutes)
+===========================================
+1. Go to https://www.emailjs.com → Sign Up Free
+2. Click "Add New Service" → Choose Gmail → Connect gshorewindows@gmail.com
+3. Click "Email Templates" → Create Template
+   Use these variables in your template:
+   - {{from_name}}  → Customer's name
+   - {{from_email}} → Customer's email
+   - {{phone}}      → Customer's phone
+   - {{service}}    → Service requested
+   - {{date}}       → Preferred date
+   - {{details}}    → Job details
+   - {{quote}}      → Estimated quote from calculator
+4. In your Account → API Keys, copy your Public Key
+5. Replace in this file:
+   YOUR_PUBLIC_KEY  → your real public key
+   YOUR_SERVICE_ID  → found in Email Services tab
+   YOUR_TEMPLATE_ID → found in Email Templates tab
+6. Done! Customers get auto-confirmation, you get a notification.
+
+EMAILJS FREE PLAN: 200 emails/month — more than enough to start.
+===========================================
+-->
+</body>
+</html>
